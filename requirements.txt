@@ -91,8 +91,6 @@ pyrsistent==0.19.3
 pyshp==2.3.1
 python-dateutil==2.8.2
 pytube==12.1.2
-pytz==2022.2.1
-pytz-deprecation-shim==0.1.0.post0
 pywin32==304
 pywin32-ctypes==0.2.0
 PyYAML==6.0
