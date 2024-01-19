@@ -109,7 +109,7 @@ soupsieve==2.3.2.post1
 SQLAlchemy==1.4.47
 stack-data==0.5.1
 statsmodels==0.14.0
-streamlit==1.23.1
+streamlit==1.30.0
 streamlit-lottie==0.0.5
 surprise==0.1
 tenacity==8.1.0
