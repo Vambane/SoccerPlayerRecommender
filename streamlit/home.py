@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
 
 # loading the data
 df = pd.read_csv('https://raw.githubusercontent.com/Vambane/SoccerPlayerRecommender/main/FullData.csv')
@@ -22,8 +25,12 @@ selected_columns = ['Rating', 'Age', 'Height', 'Weight', 'Weak_foot', 'Skill_Mov
 # creating a subset using the selected columns above
 df_selected = df_sub[selected_columns]
 
-# calculate cosine similarity matrix
-similarity_matrix = cosine_similarity(df_selected)
+# Scaling the data
+scaler = StandardScaler() #Instantiate the standard scaler
+scaled_df = scaler.fit_transform(df_selected)
+
+# Calculate cosine similarity matrix
+similarity_matrix = cosine_similarity(scaled_df)
 
 # function to get player recommendations
 def get_player_recommendations(player_name, age_filter=None, num_recommendation=10):
@@ -61,4 +68,4 @@ if st.sidebar.button('Get Recommendation'):
     recommended_players = get_player_recommendations(player_name, age_filter, num_recommendations)
     st.write(f"Recommender players for {player_name} (Age Filter: {age_filter}): ")
     for i, (name, age, rating, position) in enumerate(recommended_players, start=1):
-        st.write(f"{i}, {name} (Age: {age}, Rating: {rating}, Position: {position})")
+        st.write(f"{i}, {name} (Age: {age}, Rating: {rating}, Position: {position})")# loading the data
